@@ -3,7 +3,12 @@ it will have a routine which functions as a template to determine the exercises 
 weight values can be changed by the user but will be prefilled based previous weight values.
 each workout will have a unique id based on the date in yyyymmdd format and will be stored in a database.
 database interaction will be done through the V3 AWS SDK.
+it will have a routine which functions as a template to determine the exercises that will be done, sets, reps, and weight.
+weight values can be changed by the user but will be prefilled based previous weight values.
+each workout will have a unique id based on the date in yyyymmdd format and will be stored in a database.
+database interaction will be done through the V3 AWS SDK.
 */
+
 
 "use client"
 import React, {useEffect, useState, useMemo} from 'react';
@@ -11,6 +16,7 @@ import { fetchWorkout, getRecentEntries, addEntry } from './actions';
 import NewWorkoutScreen from '../components/newWorkoutScreen/NewWorkoutScreen';
 import { lowerRoutine, upperRoutine} from './routineDefs';
 
+// current issue is the page is getting rendered 3 times on load. this causes the useEffect to run 3 times and the getRecentEntries function to run 3 times.
 // current issue is the page is getting rendered 3 times on load. this causes the useEffect to run 3 times and the getRecentEntries function to run 3 times.
 const Page = () => {
   console.log('page');
