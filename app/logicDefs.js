@@ -1,5 +1,5 @@
 // functions to reference throughout the app
-import { lowerLowRoutine, lowerMediumRoutine, lowerHighRoutine, upperLowRoutine, upperMediumRoutine, upperHighRoutine } from './routineDefs';
+import { lowerRoutine, upperRoutine} from './routineDefs';
 
 function getWeekNumber(d) {
     // Copy date so don't modify original
@@ -25,17 +25,17 @@ export const determineRoutine = (setRoutine) => {
         case 0:
             return "rest day"
         case 1:
-            setRoutine(upperLowRoutine);
+            setRoutine(upperRoutine);
         case 2:
-            setRoutine(lowerLowRoutine);
+            setRoutine(lowerRoutine);
         case 3:
-            setRoutine(upperMediumRoutine);
+            setRoutine(upperRoutine);
         case 4:
-            setRoutine(lowerMediumRoutine);
+            setRoutine(lowerRoutine);
         case 5:
-            setRoutine(upperHighRoutine);
+            setRoutine(upperRoutine);
         case 6:
-            setRoutine(lowerHighRoutine);
+            setRoutine(lowerRoutine);
         default:
             return "No Routine";
     };
