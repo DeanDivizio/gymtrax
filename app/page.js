@@ -1,6 +1,6 @@
 "use client"
-import React, { useEffect, useState, useMemo } from 'react';
-import { fetchWorkout, getRecentEntries, addEntry } from './actions';
+import React, { useState, useMemo } from 'react';
+import { getRecentEntries } from './actions';
 import NewWorkoutScreen from '../components/newWorkoutScreen/NewWorkoutScreen';
 import { lowerRoutine, upperRoutine } from './routineDefs';
 import styles from './page.module.css';
@@ -9,11 +9,11 @@ const Page = () => {
   let routine = {};
   let previousWorkout = {};
   const [user, setUser] = useState('dean'); // this will need to be set differently. eventually though login. right now a drop down or multiple buttons since it's secured through CF.
-  const [workout, setWorkout] = useState({});
-  const [showNewWorkoutScreen, setShowNewWorkoutScreen] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [workout, setWorkout] = useState({}); // this is used to populate the form with the previous workout values
+  const [showNewWorkoutScreen, setShowNewWorkoutScreen] = useState(false); // this is used to toggle the new workout screen
+  const [loggedIn, setLoggedIn] = useState(false); // this is used to toggle the login/new workout buttons
 
-  const determineRoutine = () => {
+  const determineRoutine = () => { // determines the routine for the day based on the day of the week
     const day = new Date().getDay();
     switch (day) {
       case 0:
@@ -41,13 +41,13 @@ const Page = () => {
         routine = "No Routine";
     };
   }
-  const formattedDate = useMemo(() => {
+  const formattedDate = useMemo(() => { // gets the current date in yyyymmdd format and formats it as a string
     const today = new Date();
     return `${today.getFullYear()}${(today.getMonth() + 1).toString().padStart(2, '0')}${today.getDate().toString().padStart(2, '0')}`;
   }, []);
-  const date = formattedDate;
+  const date = parseInt(formattedDate); // converts the formatted date to an integer for later use.
 
-  const handleWorkoutClick = () => {
+  const handleWorkoutClick = () => { // sets the showNewWorkoutScreen variable to true when the new workout button is clicked
     setShowNewWorkoutScreen(true);
   };
 
@@ -60,17 +60,17 @@ const Page = () => {
           if (recents[i].data.muscleGroup == routine.muscleGroup) {
             previousWorkout = recents[i].data;
             break;
-          } else {
+          } else { // in the event there are no matching entries, default to the stored routine
             previousWorkout = routine;
           }
         }
       }
     }
     await recentsAsyncWrapper();
-    if (previousWorkout) {
+    if (previousWorkout) { // set the workout state to the previous workout. 
       setWorkout(previousWorkout);
     }
-    setLoggedIn(true);
+    setLoggedIn(true); // set the loggedIn state to true and displays the new workout button
   }
 
   return (
