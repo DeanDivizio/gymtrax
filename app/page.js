@@ -78,7 +78,10 @@ const Page = () => {
       <div className={styles.homeContent}>
       <h1>GymTrax</h1>
       {!loggedIn && <button onClick={handleUserClick}>Login</button>}
-      {loggedIn && <button onClick={handleWorkoutClick}>New Workout</button>}
+      {loggedIn && <div>
+        <h2>{`Welcome Back, ${user.charAt(0).toUpperCase() + user.slice(1)}`}</h2> 
+        <button onClick={handleWorkoutClick}>New Workout</button>
+        </div>}
       {showNewWorkoutScreen && <NewWorkoutScreen date={date} user={user} workout={workout} />}
       </div>
     </div>

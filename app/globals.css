@@ -2,7 +2,75 @@
 
 body{
   background-color: #eeeeee;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.35)), url(https://static.vecteezy.com/system/resources/previews/000/575/631/original/abstract-gray-and-white-color-geometric-background-vector-illustration.jpg);
 }
 h1,h2,h3,h4,p,a{
   font-family: 'Inter', sans-serif;
+}
+h1{
+  font-size: calc(4.5rem + 1vw);
+  font-weight: 200;
+  color: #333;
+  margin-bottom:2rem;
+}
+h2{
+  font-size: calc(2rem + 1vw);
+  font-weight: 200;
+  color: #333;
+  margin-top:0;
+  margin-bottom:1rem;
+}
+h3{
+  font-size: calc(1.5rem + 0.5vw);
+  font-weight: 200;
+  text-decoration: underline;
+  color: #333;
+  margin-top:0;
+  margin-bottom:1rem;
+
+}
+
+button{
+  font-family: 'Inter', sans-serif;
+  font-size: calc(1.5rem + 0.1vw);
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: #161616;
+  background-color: #eeeeee;
+  border: 1.5px solid #161616;
+  border-radius: 0;
+  padding: 0.6rem 3rem;
+  transition: all 0.3s;
+}
+button:hover{
+  background-color: #161616;
+  color: #eeeeee;
+  transform: scale(1.05);
+}
+form{
+  margin: 2rem;
+}
+input{
+  font-family: 'Inter', sans-serif;
+  font-size: calc(1.2rem + 0.3vw);
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: #161616;
+  background-color: #eeeeee;
+  border: 1.5px solid #161616;
+  border-radius: 0;
+  padding: 0.6rem 1rem;
+  margin: 0.5rem;
+  width: 20vw;
+  align-self: flex-end;
+  justify-self: flex-end;
+  margin-right:0;
+}
+label{
+  font-family: 'Inter', sans-serif;
+  font-size: calc(1.2rem + 0.3vw);
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: #161616;
+  margin: 0.5rem;
 }

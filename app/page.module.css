@@ -1,0 +1,18 @@
+.homeContainer{
+  display: flex;
+  justify-content: center;
+  align-items: top;
+  height: 100vh;
+}
+.homeContent{
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: top;
+  align-items: center;
+  text-align: center;
+}
+.homeContent h2{
+  margin-bottom:6rem;
+  font-style: italic ;
+}

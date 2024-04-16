@@ -1,6 +1,7 @@
 "use client"
 import React from 'react';
 import { addEntry } from '@/app/actions';
+import styles from './newWorkoutScreen.module.css';
 
 const NewWorkoutScreen = ({user, workout, date}) => {
 
@@ -24,12 +25,12 @@ const handleSubmit = (e) => {
     heading = heading.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '); // capitalize first letter of each word in heading
 
     return (
-        <div>
+        <div className={styles.screenContainer}>
         <h2><em>Get After It</em></h2>
         <h3>{heading}</h3> {/*dynamically set heading based on routine */}
-        <form onSubmit={handleSubmit}> {/* goes through previous workout to generate form for current workout and sets input placeholders to previous weight values */}
+        <form className={styles.formContainer} onSubmit={handleSubmit}> {/* goes through previous workout to generate form for current workout and sets input placeholders to previous weight values */}
             {workout && workout.exercises && Object.keys(workout.exercises).map((key) => (
-                <div key={key}>
+                <div className={styles.formDiv} key={key}>
                     <label>{workout.exercises[key].displayName} 3x5:</label>
                     <input 
                         type="number" 

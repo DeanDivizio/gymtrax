@@ -8,9 +8,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <p>Dummy Menu</p>
-        {children}</body>
+      <body>{children}</body>
     </html>
   );
 }
