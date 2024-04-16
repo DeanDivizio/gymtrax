@@ -1,7 +1,6 @@
 'use server';
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
 import { DynamoDBDocumentClient, ScanCommand, PutCommand, QueryCommand } from '@aws-sdk/lib-dynamodb';
-import { upperRoutine, lowerRoutine } from './routineDefs';
 
 const client = new DynamoDBClient({
     credentials: {
@@ -12,17 +11,12 @@ const client = new DynamoDBClient({
   });
 const docClient = DynamoDBDocumentClient.from(client);
 
-// takes user name, data, and date as arguments and adds a new entry to the DynamoDB table
-export async function addEntry(name, data, date) {
+// takes finalWorkout and adds it to the DynamoDB table
+export async function addEntry(entry) {
     const params = {
         TableName: process.env.TABLE_NAME,
-        Item: {
-            "user": name,
-            "workoutDate": date,
-            "data": data
-        }
+        Item: entry   
     };
-
     try {
         await docClient.send(new PutCommand(params));
         console.log("PutItem succeeded:", JSON.stringify(params.Item, null, 2));
