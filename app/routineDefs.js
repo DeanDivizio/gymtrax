@@ -56,13 +56,13 @@ export const upperRoutine = {
             reps: 5,
             weight: 50
         },
-        latPullDown: {
-            displayName: 'Lat Pull Down',
+        latPull: {
+            displayName: 'Lat Pull',
             sets: 3,
             reps: 5,
             weight: 50
         },
-        seatedRow: {
+        row: {
             displayName: 'Seated Row',
             sets: 3,
             reps: 5,

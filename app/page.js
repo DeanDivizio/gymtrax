@@ -3,15 +3,17 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { fetchWorkout, getRecentEntries, addEntry } from './actions';
 import NewWorkoutScreen from '../components/newWorkoutScreen/NewWorkoutScreen';
 import { lowerRoutine, upperRoutine } from './routineDefs';
+import styles from './page.module.css';
 
 const Page = () => {
   let routine = {};
   let previousWorkout = {};
-  const [user, setUser] = useState('test'); // this will need to be set differently. eventually though login. right now a drop down or multiple buttons since it's secured through CF.
+  const [user, setUser] = useState('dean'); // this will need to be set differently. eventually though login. right now a drop down or multiple buttons since it's secured through CF.
   const [workout, setWorkout] = useState({});
   const [showNewWorkoutScreen, setShowNewWorkoutScreen] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
 
-  const determineRoutine = (setRoutine) => {
+  const determineRoutine = () => {
     const day = new Date().getDay();
     switch (day) {
       case 0:
@@ -57,11 +59,9 @@ const Page = () => {
         for (let i = 0; i < recents.length; i++) {
           if (recents[i].data.muscleGroup == routine.muscleGroup) {
             previousWorkout = recents[i].data;
-            console.log(previousWorkout);
             break;
           } else {
             previousWorkout = routine;
-            console.log(previousWorkout);
           }
         }
       }
@@ -69,16 +69,18 @@ const Page = () => {
     await recentsAsyncWrapper();
     if (previousWorkout) {
       setWorkout(previousWorkout);
-      console.log(workout);
     }
+    setLoggedIn(true);
   }
 
   return (
-    <div>
+    <div className={styles.homeContainer}>
+      <div className={styles.homeContent}>
       <h1>GymTrax</h1>
-      <button onClick={handleWorkoutClick}>New Workout</button>
+      {!loggedIn && <button onClick={handleUserClick}>Login</button>}
+      {loggedIn && <button onClick={handleWorkoutClick}>New Workout</button>}
       {showNewWorkoutScreen && <NewWorkoutScreen date={date} user={user} workout={workout} />}
-      <button onClick={handleUserClick}>UserClick</button>
+      </div>
     </div>
   );
 };
