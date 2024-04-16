@@ -31,3 +31,7 @@
     align-items: center;
     margin: 1rem;
 }
+.cancelButton{
+    background-color: #290a0a;
+    color:white;
+}

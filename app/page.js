@@ -49,6 +49,7 @@ const Page = () => {
 
   const handleWorkoutClick = () => { // sets the showNewWorkoutScreen variable to true when the new workout button is clicked
     setShowNewWorkoutScreen(true);
+    console.log('workout clicked');
   };
 
   const handleUserClick = async () => {
@@ -81,8 +82,9 @@ const Page = () => {
       {loggedIn && <div>
         <h2>{`Welcome Back, ${user.charAt(0).toUpperCase() + user.slice(1)}`}</h2> 
         <button onClick={handleWorkoutClick}>New Workout</button>
+        <button>{'Stats Placeholder'}</button>
         </div>}
-      {showNewWorkoutScreen && <NewWorkoutScreen date={date} user={user} workout={workout} />}
+      {showNewWorkoutScreen && <NewWorkoutScreen date={date} user={user} workout={workout} setShowNewWorkoutScreen={setShowNewWorkoutScreen}/>}
       </div>
     </div>
   );

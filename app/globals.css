@@ -41,6 +41,7 @@ button{
   border-radius: 0;
   padding: 0.6rem 3rem;
   transition: all 0.3s;
+  margin-bottom: 3rem;
 }
 button:hover{
   background-color: #161616;

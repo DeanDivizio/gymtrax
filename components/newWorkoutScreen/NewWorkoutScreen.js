@@ -3,7 +3,7 @@ import React from 'react';
 import { addEntry } from '@/app/actions';
 import styles from './newWorkoutScreen.module.css';
 
-const NewWorkoutScreen = ({user, workout, date}) => {
+const NewWorkoutScreen = ({user, workout, date, setShowNewWorkoutScreen}) => {
 
 const handleSubmit = (e) => {
     e.preventDefault(); //keeps page from reloading
@@ -21,6 +21,10 @@ const handleSubmit = (e) => {
     };
     addEntry(finalWorkout); //sends the final workout object to the database
 }
+    const handleClose = () => {
+        setShowNewWorkoutScreen(false); //closes the new workout screen
+    }
+
     let heading = `${workout.muscleGroup} Body`; // set variable heading based on routine
     heading = heading.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' '); // capitalize first letter of each word in heading
 
@@ -43,6 +47,7 @@ const handleSubmit = (e) => {
                 <button type="submit">Send It</button>
             </div>
         </form>
+        <button className={styles.cancelButton} onClick={handleClose}>Cancel</button> {/* button to go back to the main screen */}
         </div>
     );
 };
