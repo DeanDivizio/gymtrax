@@ -7,10 +7,10 @@ The goal here is to provide a standardized way of logging and viewing workout da
 ## To - Do
 - [x] Make it run
 - [x] Use server actions to interface with DB
-- [] Design UI
-- [] PWA Support
-- [] Data visualization
-- [] Handle user selection
-- [] Handle authenticaion
+-  Design UI
+-  PWA Support
+-  Data visualization
+-  Handle user selection
+-  Handle authenticaion
 
 User management is at the bottom because I'd like to get it working end-to-end for a single user first, then expand to handling multiple.
