@@ -81,8 +81,10 @@ const Page = () => {
       {!loggedIn && <button onClick={handleUserClick}>Login</button>}
       {loggedIn && <div>
         <h2>{`Welcome Back, ${user.charAt(0).toUpperCase() + user.slice(1)}`}</h2> 
+        <div className={styles.buttonContainer}>
         <button onClick={handleWorkoutClick}>New Workout</button>
         <button>{'Stats Placeholder'}</button>
+        </div>
         </div>}
       {showNewWorkoutScreen && <NewWorkoutScreen date={date} user={user} workout={workout} setShowNewWorkoutScreen={setShowNewWorkoutScreen}/>}
       </div>

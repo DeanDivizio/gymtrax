@@ -1,11 +1,13 @@
 "use client"
-import React from 'react';
+import React, {useState} from 'react';
 import { addEntry } from '@/app/actions';
 import styles from './newWorkoutScreen.module.css';
 
 const NewWorkoutScreen = ({user, workout, date, setShowNewWorkoutScreen}) => {
+    const [submitText, setSubmitText] = useState('Send It');
 
 const handleSubmit = (e) => {
+    
     e.preventDefault(); //keeps page from reloading
     let updatedWorkout = {...workout}; //takes new values and updates the workout object
     Object.keys(workout.exercises).forEach((key, index) => {
@@ -20,6 +22,11 @@ const handleSubmit = (e) => {
         workoutDate: parseInt(date)
     };
     addEntry(finalWorkout); //sends the final workout object to the database
+    setSubmitText('Check'); //changes the submit button text to 'Check'
+    setTimeout(() => { //closes new workout screen after 1 second
+        setShowNewWorkoutScreen(false);
+    }, 1000);
+   
 }
     const handleClose = () => {
         setShowNewWorkoutScreen(false); //closes the new workout screen
@@ -44,7 +51,7 @@ const handleSubmit = (e) => {
                 </div>
             ))}
             <div>
-                <button type="submit">Send It</button>
+                <button type="submit">{submitText}</button>
             </div>
         </form>
         <button className={styles.cancelButton} onClick={handleClose}>Cancel</button> {/* button to go back to the main screen */}
