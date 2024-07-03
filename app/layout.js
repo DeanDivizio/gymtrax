@@ -18,7 +18,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <SignedIn>{children}</SignedIn>
-        <SignedOut><SignInButton></SignInButton></SignedOut>
+        <SignedOut>
+          <div style={{width: '100vw', height: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+            <h1>GymTrax</h1>
+            <SignInButton></SignInButton>
+            </div>
+        </SignedOut>
       </body>
     </html>
     </ClerkProvider>
