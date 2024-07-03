@@ -11,6 +11,7 @@ The goal here is to provide a standardized way of logging and viewing workout da
 -  PWA Support
 -  Data visualization
 -  Handle user selection
--  Handle authenticaion
+-  [x] Handle authenticaion
 
 User management is at the bottom because I'd like to get it working end-to-end for a single user first, then expand to handling multiple.
+The above here is now erroneous. Added user auth with clerk on 07/03/2024
