@@ -1,10 +1,16 @@
 "use client"
 import React, {useState} from 'react';
-import { addEntry } from '@/app/actions';
+import { addEntry } from '../../app/actions';
+import { useIntegerDate } from '../hooks';
 import styles from './newWorkoutScreen.module.css';
 
-const NewWorkoutScreen = ({user, workout, date, setShowNewWorkoutScreen}) => {
+const NewWorkoutScreen = ({user, workout, setShowNewWorkoutScreen}) => {
     const [submitText, setSubmitText] = useState('Send It');
+    let date = useIntegerDate();
+    console.log("User:", user);
+    console.log("Workout:", workout);
+    console.log("Date:", date);
+
 
 const handleSubmit = (e) => {
     
@@ -29,7 +35,7 @@ const handleSubmit = (e) => {
    
 }
     const handleClose = () => {
-        setShowNewWorkoutScreen(false); //closes the new workout screen
+      setShowNewWorkoutScreen(false)
     }
 
     let heading = `${workout.muscleGroup} Body`; // set variable heading based on routine

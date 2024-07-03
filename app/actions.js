@@ -46,10 +46,31 @@ export async function getRecentEntries(userName) {
 
     try {
         const data = await docClient.send(new QueryCommand(params));
-        console.log("Query succeeded:", JSON.stringify(data, null, 2));
+        // console.log("Query succeeded:", JSON.stringify(data, null, 2));
         return data.Items;  // Return the retrieved records directly
     } catch (err) {
         console.error("Unable to query the table. Error JSON:", JSON.stringify(err, null, 2));
         throw err;  // Throw the original error to get more details in the calling function
     }
 }
+
+export const getPreviousWorkout = async ({ username, routine}) => {
+    let previousWorkout;
+    async function recentsAsyncWrapper() {
+      let recents = await getRecentEntries(username);
+      if (recents) {
+        for (let i = 0; i < recents.length; i++) {
+          if (recents[i].data.muscleGroup == routine.muscleGroup) {
+            previousWorkout = recents[i].data;
+            break;
+          } else { 
+            previousWorkout = routine;
+          }
+        }
+      }
+    }
+    await recentsAsyncWrapper();
+    if (previousWorkout) { 
+      return(previousWorkout);
+    }
+  }

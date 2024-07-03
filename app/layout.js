@@ -16,7 +16,10 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <SignedIn>{children}</SignedIn>
+        <SignedOut><SignInButton></SignInButton></SignedOut>
+      </body>
     </html>
     </ClerkProvider>
   );

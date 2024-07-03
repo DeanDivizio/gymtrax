@@ -75,3 +75,25 @@ label{
   color: #161616;
   margin: 0.5rem;
 }
+.linkbutton {
+  font-family: 'Inter', sans-serif;
+  font-size: calc(1.5rem + 0.1vw);
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: #161616;
+  background-color: #eeeeee;
+  border: 1.5px solid #161616;
+  border-radius: 0;
+  padding: 0.6rem 3rem;
+  transition: all 0.3s;
+  margin-bottom: 3rem;
+  text-decoration: none;
+}
+.linkbutton :hover {
+  background-color: #161616;
+  color: #eeeeee;
+  transform: scale(1.05);
+}
+.linkbutton p {
+  margin: 0;
+}
