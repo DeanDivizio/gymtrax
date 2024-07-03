@@ -2,7 +2,7 @@ import React from 'react';
 import { determineRoutine, useIntegerDate } from '../components/hooks.js'
 import { getPreviousWorkout } from "./actions"
 import { currentUser } from '@clerk/nextjs/server'
-import NewWorkoutButton from '../components/NewWorkoutButton/NewWorkoutButton'
+import NewWorkoutButton from '../components/newWorkoutButton/NewWorkoutButton'
 import AddCalorieButton from '../components/addCallButton/AddCalorieButton.js'
 import styles from './page.module.css';
 
