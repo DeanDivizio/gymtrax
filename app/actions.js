@@ -74,3 +74,18 @@ export const getPreviousWorkout = async ({ username, routine}) => {
       return(previousWorkout);
     }
   }
+
+  export async function addCalorieEntry(entry) {
+    const params = {
+        TableName: process.env.CAL_TABLE_NAME,
+        Item: entry   
+    };
+    try {
+        await docClient.send(new PutCommand(params));
+        console.log("PutItem succeeded:", JSON.stringify(params.Item, null, 2));
+        return { message: "Item added successfully" };
+    } catch (err) {
+        console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
+        throw err;
+    }
+}

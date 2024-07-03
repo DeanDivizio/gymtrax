@@ -3,6 +3,7 @@ import { determineRoutine, useIntegerDate } from '../components/hooks.js'
 import { getPreviousWorkout } from "./actions"
 import { currentUser } from '@clerk/nextjs/server'
 import NewWorkoutButton from '../components/NewWorkoutButton/NewWorkoutButton'
+import AddCalorieButton from '../components/addCallButton/AddCalorieButton.js'
 import styles from './page.module.css';
 
 const Page = async () => {
@@ -28,6 +29,7 @@ const Page = async () => {
           <h2>{`Welcome Back, ${user.firstName}`}</h2> 
           <div className={styles.buttonContainer}>
             <NewWorkoutButton user={username} workout={workout}/>
+            <AddCalorieButton user={username}/>
             <button>{'Stats Placeholder'}</button>
           </div>
         </div>
